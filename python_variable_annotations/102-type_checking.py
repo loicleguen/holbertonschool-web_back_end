@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
+""" Module for zooming in on an array."""
 from typing import Tuple, List
 
 
 def zoom_array(lst: Tuple, factor: int = 2) -> List:
+    """ Create a zoomed-in version of the input tuple."""
     zoomed_in: List = [
         item for item in lst
         for i in range(factor)
