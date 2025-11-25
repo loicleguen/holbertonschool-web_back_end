@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
+"""This module contains a function that runs multiple coroutines concurrently
+and collects their results in the order they complete."""
 import asyncio
 from typing import List
 wait_random = __import__('0-basic_async_syntax').wait_random
-"""This module contains a function that runs multiple coroutines concurrently
-and collects their results in the order they complete."""
 
 
 async def wait_n(n: int, max_delay: int) -> List[float]:
