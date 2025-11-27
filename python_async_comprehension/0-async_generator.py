@@ -3,10 +3,10 @@
 10 random numbers between 0 and 10 with 1 second delay each."""
 import asyncio
 import random
-from typing import Generator
+from typing import AsyncGenerator
 
 
-async def async_generator() -> Generator[float, None, None]:
+async def async_generator() -> AsyncGenerator[float, None, None]:
     """Asynchronous generator that yields 10 random numbers
     between 0 and 10 with a 1 second delay each."""
     for _ in range(10):
