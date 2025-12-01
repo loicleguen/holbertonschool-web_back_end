@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Log stats for Nginx logs stored in MongoDB"""
+"""Log stats for Nginx logs stored in MongoDB (with top 10 IPs)"""
 
 from pymongo import MongoClient
 
@@ -21,3 +21,11 @@ if __name__ == "__main__":
         "path": "/status"
     })
     print(f"{status_check} status check")
+    print("IPs:")
+    pipeline = [
+        {"$group": {"_id": "$ip", "count": {"$sum": 1}}},
+        {"$sort": {"count": -1}},
+        {"$limit": 10}
+    ]
+    for ip in collection.aggregate(pipeline):
+        print(f"\t{ip['_id']}: {ip['count']}")
