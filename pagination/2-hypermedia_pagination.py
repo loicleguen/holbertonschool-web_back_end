@@ -45,7 +45,7 @@ class Server:
         """Return a dictionary with hypermedia pagination info."""
         data_page = self.get_page(page, page_size)
         total_items = len(self.dataset())
-        total_pages = (total_items + page_size - 1) / page_size
+        total_pages = (total_items + page_size - 1) // page_size
         prev_page = page - 1 if page > 1 else None
         next_page = page + 1 if page < total_pages else None
         return {
