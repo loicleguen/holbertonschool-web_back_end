@@ -42,16 +42,18 @@ class Server:
     def get_hyper_index(self, index: int = None, page_size: int = 10) -> Dict:
         """ Return a deletion-resilient page of the dataset. """
         assert isinstance(index, int) and index >= 0
+        assert isinstance(page_size, int) and page_size >= 0
         indexed_data = self.indexed_dataset()
-        keys = sorted(indexed_data.keys())
-        assert index < len(keys)
-        start_pos = keys.index(index)
-        page_keys = keys[start_pos:start_pos + page_size]
-        data = [indexed_data[k] for k in page_keys]
-        if start_pos + page_size < len(keys):
-            next_index = keys[start_pos + page_size]
-        else:
-            next_index = None
+        data = []
+        current_index = index
+        collected = 0
+        while collected < page_size and current_index < len(indexed_data):
+            if current_index in indexed_data:
+                data.append(indexed_data[current_index])
+                collected += 1
+            current_index += 1
+        next_index = current_index \
+            if current_index < len(indexed_data) else None
         return {
             'index': index,
             'next_index': next_index,
