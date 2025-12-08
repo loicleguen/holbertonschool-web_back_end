@@ -21,5 +21,6 @@ module.exports = {
         'no-unused-vars': 'warn',            // Warn for unused variables
         'no-console': 'warn',                // Warn for console.log
         'eol-last': ['error', 'always'],     // Newline at end of file
+        'arrow-spacing': ['error', { 'before': true, 'after': true }], // Enforce space around =>
     }
 };
