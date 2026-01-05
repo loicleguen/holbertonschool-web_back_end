@@ -9,7 +9,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/students', async (req, res) => {
-  const output = ['This is the list of students'];
+  const output = ['This is the list of our students'];
 
   const originalLog = console.log;
   console.log = (msg) => {
