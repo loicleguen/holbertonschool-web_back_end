@@ -13,7 +13,9 @@ class StudentsController {
       );
 
       sortedfields.forEach((field) => {
-        output.push(`Number of students in ${field}: ${fields[field].length}. List: ${fields[field].join(', ')}`);
+        const count = fields[field].length;
+        const list = fields[field].join(', ');
+        output.push(`Number of students in ${field}: ${count}. List: ${list}`);
       });
 
       res.status(200).send(output.join('\n'));
